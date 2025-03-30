@@ -1,0 +1,79 @@
+.bb-pro-pagination {
+  margin-bottom: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.bb-pro-pagination p {
+  font-size: 15px;
+}
+.bb-pro-pagination ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.bb-pro-pagination ul li:not(:last-child) {
+  margin-right: 6px;
+}
+.bb-pro-pagination ul li span {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-weight: 300;
+  color: #777;
+  line-height: 32px;
+  background: #f8f8fb;
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  vertical-align: top;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+.bb-pro-pagination ul li span:hover {
+  background-color: #3d4750;
+  color: #fff;
+}
+.bb-pro-pagination ul li span.next,
+.bb-pro-pagination ul li span.prev {
+  width: auto;
+  padding: 0 13px;
+  color: #fff;
+  background-color: #3d4750;
+  line-height: 30px;
+}
+.bb-pro-pagination ul li span.next i {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  margin-left: 10px;
+  font-size: 16px;
+  width: 8px;
+  color: #fff;
+}
+
+.bb-pro-pagination ul li span.prev i {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  margin-right: 10px;
+  font-size: 16px;
+  width: 8px;
+  color: #fff;
+}
+.bb-pro-pagination ul li.active span {
+  background-color: #3d4750;
+  color: #fff;
+}

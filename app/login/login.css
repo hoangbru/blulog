@@ -1,0 +1,43 @@
+/* login */
+.bb-login-contact {
+  max-width: 500px;
+  margin: auto;
+  border: 1px solid #eee;
+  padding: 30px;
+  border-radius: 20px;
+}
+.bb-login-contact .bb-login-wrap {
+  margin-bottom: 24px;
+}
+.bb-login-contact .bb-login-wrap a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #777;
+}
+.bb-login-contact .bb-login-button {
+  margin: -5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.bb-login-contact .bb-login-button button {
+  margin: 5px;
+  padding: 4px 20px;
+}
+.bb-login-contact .bb-login-button a {
+  height: 36px;
+  margin: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #686e7d;
+}
+.bb-login-contact .bb-login-button a:hover {
+  color: #6c7fd8;
+}

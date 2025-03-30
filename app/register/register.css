@@ -1,0 +1,57 @@
+/* Register */
+.bb-register {
+  max-width: 500px;
+  margin: auto;
+  border: 1px solid #eee;
+  padding: 30px;
+  border-radius: 20px;
+}
+.bb-register .bb-register-wrap {
+  margin-bottom: 24px;
+}
+.bb-register .bb-register-wrap a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #777;
+}
+.bb-register .bb-register-button {
+  margin: -5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.bb-register .bb-register-button button {
+  margin: 5px;
+  padding: 4px 20px;
+}
+.bb-register .bb-register-button a {
+  height: 36px;
+  margin: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #686e7d;
+}
+.bb-register .bb-register-button a:hover {
+  color: #6c7fd8;
+}
+.bb-register .bb-register-wrap .custom-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #686e7d;
+  border: 1px solid #eee;
+  outline: 0;
+  border-radius: 10px;
+}
+.bb-register .bb-register-wrap .custom-select .custom-select {
+  padding: 0;
+  border: 0;
+}
