@@ -20,7 +20,7 @@ const FooterBottom = () => {
             <div className="bb-copy">
               <span>© {currentYear} Toàn bộ bản quyền thuộc</span>
               <Link className="site-name" href={`/`}>
-                Blulog
+                {process.env.NEXT_PUBLIC_APP_NAME}
               </Link>
             </div>
           </div>

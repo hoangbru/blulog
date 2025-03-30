@@ -61,8 +61,7 @@ const FooterTop = () => {
                 height={50}
               />
               <p className="bb-footer-detail">
-                Blulog is the biggest market of grocery products. Get your daily
-                needs from our store.
+                {process.env.NEXT_PUBLIC_APP_NAME} - Nền tảng blog nơi bạn khám phá thế giới.
               </p>
             </div>
           </div>

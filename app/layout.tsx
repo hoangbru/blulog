@@ -10,7 +10,6 @@ import "./globals.css";
 
 import {
   BackToTop,
-  PostSidebar,
   FooterContainer,
   HeaderContainer,
 } from "@/components/layout";
@@ -25,10 +24,19 @@ const fontRegular = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
-  title: "Blulog",
-  description: "Blulog - Discover the world",
+  title: {
+    default: `${process.env.NEXT_PUBLIC_APP_NAME}`,
+    template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME}`,
+  },
+  description: "Nền tảng blog nơi bạn khám phá thế giới.",
   alternates: {
     canonical: process.env.NEXT_PUBLIC_BASE_URL,
+  },
+  openGraph: {
+    type: "website",
+    url: process.env.NEXT_PUBLIC_BASE_URL,
+    title: `${process.env.NEXT_PUBLIC_APP_NAME} - Discover the world`,
+    description: "Nền tảng blog nơi bạn khám phá thế giới.",
   },
   twitter: {
     card: "summary_large_image",
@@ -48,10 +56,7 @@ export default async function LocaleLayout({
           <Toaster />
           <section className="section-post padding-tb-50">
             <div className="container">
-              <div className="row">
-                {children}
-                <PostSidebar />
-              </div>
+              <div className="row">{children}</div>
             </div>
           </section>
           <BackToTop />

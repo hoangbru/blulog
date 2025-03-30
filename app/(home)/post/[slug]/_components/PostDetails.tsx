@@ -38,7 +38,6 @@ const PostDetails = ({ post }: PostDetailsProps) => {
               alt={post.slug}
               width={800}
               height={400}
-              layout="responsive"
             />
           </div>
           <div
