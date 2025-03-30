@@ -49,7 +49,7 @@
   cursor: pointer;
 }
 .top-header .inner-top-header .col-right-bar .cols .dropdown div:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 
 .bb-header-btn {
@@ -83,7 +83,7 @@
   height: 30px;
 }
 .bb-header-btn .header-icon svg path {
-  fill: #6c7fd8;
+  fill: var(--main-color);
 }
 .bb-header-btn .bb-btn-stitle {
   -webkit-transition: all 0.3s ease-in-out;
@@ -98,7 +98,7 @@
 }
 .bb-toggle-menu .header-icon i {
   font-size: 22px;
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 
 .header-search {
@@ -229,7 +229,7 @@
   width: 30px;
 }
 .bottom-header .inner-bottom-header .bb-sidebar-toggle svg path {
-  fill: #6c7fd8;
+  fill: var(--main-color);
 }
 .bottom-header .inner-bottom-header .bb-sidebar-toggle {
   display: none;
@@ -321,6 +321,7 @@
   .bb-dropdown-menu
   li
   span {
+  cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   font-size: 13px;
@@ -340,7 +341,7 @@
   .bb-dropdown-menu
   li
   span:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bottom-header .inner-bottom-header .bb-header-buttons .bb-btn-desc {
   display: -webkit-box;
@@ -406,7 +407,7 @@
   width: 25px;
 }
 .bb-main-menu-desk .bb-inner-menu-desk .bb-header-btn svg path {
-  fill: #6c7fd8;
+  fill: var(--main-color);
 }
 .bb-main-menu-desk .bb-inner-menu-desk .navbar-toggler {
   display: none;
@@ -462,7 +463,7 @@
   a
   svg
   path {
-  fill: #6c7fd8;
+  fill: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk
@@ -477,7 +478,7 @@
   ul.navbar-nav
   li:hover
   a.nav-link {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk
@@ -485,7 +486,7 @@
   ul.navbar-nav
   li:hover
   a.nav-link:after {
-  border-color: #6c7fd8;
+  border-color: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk
@@ -493,7 +494,7 @@
   ul.navbar-nav
   li:hover
   span {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk
@@ -554,7 +555,7 @@
   .menu_title
   a {
   height: auto;
-  color: #6c7fd8;
+  color: var(--main-color);
   font-size: 15px;
   font-weight: 500;
   display: block;
@@ -593,7 +594,7 @@
   .mega-menu
   li
   a:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk
@@ -754,7 +755,7 @@
   .bb-dropdown-menu
   li:hover
   > a {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk
@@ -852,7 +853,7 @@
   .bb-mega-menu
   li
   a:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk
@@ -892,7 +893,7 @@
   .inner-select
   svg
   path {
-  fill: #6c7fd8;
+  fill: var(--main-color);
 }
 .bb-main-menu-desk
   .bb-inner-menu-desk

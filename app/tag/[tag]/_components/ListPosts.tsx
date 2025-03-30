@@ -50,7 +50,7 @@ const ListPosts: FC<ListPostsProps> = ({ tag }) => {
       }
     } catch (error) {
       console.error("Error fetching posts:", error);
-      setError("Failed to load posts, please try again later.");
+      setError("Không thể tải danh sách bài viết, vui lòng thử lại sau.");
     } finally {
       setIsLoading(false);
     }
@@ -69,8 +69,8 @@ const ListPosts: FC<ListPostsProps> = ({ tag }) => {
     }
   };
   return (
-    <div className="col-xl-8 col-lg-7 col-12">
-      <div className="row mb-minus-24">
+    <div className="col-xl-8 col-lg-7 col-12 mb-24">
+      <div className="row">
         {isLoading ? (
           <div>Đang tải...</div>
         ) : error ? (

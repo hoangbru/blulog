@@ -1,69 +1,168 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
-import { useState, useRef, RefObject } from "react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useOnClickOutside } from "usehooks-ts";
+import toast from "react-hot-toast";
+
+import MobileHeader from "./MobileHeader";
+import HeaderSearch from "./HeaderSearch";
+
+import api from "@/libs/axios";
+import { useProfile } from "@/context/ProfileContext";
 
 const HeaderTop = () => {
-  const [languageDropdown, setLanguageDropdown] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
+  const { profile, setProfile } = useProfile();
 
   const currentLang = pathname?.split("/")[1] || "en";
 
   const handleChangeLanguage = (lang: string) => {
     const newPath = pathname?.replace(`/${currentLang}`, `/${lang}`);
     router.push(newPath || `/`);
-    setLanguageDropdown(false);
   };
 
-  useOnClickOutside(dropdownRef as RefObject<HTMLElement>, () =>
-    setLanguageDropdown(false)
-  );
+  const logout = async () => {
+    try {
+      const response = await api.post("/api/logout");
+      const meta = response?.data?.meta;
+
+      if (!meta || meta.errors) {
+        return toast.error(meta?.message || "Something went wrong!");
+      }
+
+      toast.success(meta.message);
+      localStorage.removeItem("_bl_tk");
+      setProfile(undefined);
+      router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/login`);
+    } catch (error) {
+      console.error("Logout failed:", error);
+      toast.error("Logout failed, please try again.");
+    }
+  };
 
   return (
-    <div className="top-header">
+    <div className="bottom-header">
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <div className="inner-top-header">
-              {/* Left Bar */}
-              <div className="col-left-bar">
-                <Link href="/shop">Flat 50% Off On Grocery Shop.</Link>
-              </div>
-
-              {/* Right Bar */}
-              <div className="col-right-bar">
-                <div className="cols">
-                  <Link href="/faq">Help?</Link>
+            <div className="inner-bottom-header">
+              <div className="cols bb-logo-detail">
+                {/* Header Logo Start */}
+                <div className="header-logo">
+                  <Link href={`/`}>
+                    <Image
+                      src="/assets/img/logo/logo.png"
+                      className="light"
+                      alt="logo"
+                      width={125}
+                      height={43}
+                      priority
+                    />
+                  </Link>
                 </div>
-
-                {/* Language Dropdown */}
-                <div className="cols">
-                  <div className="custom-dropdown" ref={dropdownRef}>
-                    <Link
-                      className="bb-dropdown-toggle"
-                      href=""
-                      onClick={() => setLanguageDropdown(!languageDropdown)}
-                    >
-                      Language
-                    </Link>
-                    {languageDropdown && (
-                      <ul className="dropdown">
+              </div>
+              <div className="cols">
+                <HeaderSearch />
+              </div>
+              <div className="cols bb-icons">
+                <div className="bb-flex-justify">
+                  <div className="bb-header-buttons">
+                    {/* Language */}
+                    <div className="bb-acc-drop">
+                      <div
+                        className="bb-header-btn bb-header-user dropdown-toggle bb-user-toggle"
+                        title="Language"
+                      >
+                        <div className="bb-btn-desc">
+                          <span className="bb-btn-title">Ngôn ngữ</span>
+                        </div>
+                      </div>
+                      <ul className="bb-dropdown-menu">
                         <li>
-                          <div onClick={() => handleChangeLanguage("en")}>
+                          <span
+                            className="dropdown-item"
+                            onClick={() => handleChangeLanguage("en")}
+                          >
                             English
-                          </div>
+                          </span>
                         </li>
                         <li>
-                          <div onClick={() => handleChangeLanguage("vi")}>
+                          <span
+                            className="dropdown-item"
+                            onClick={() => handleChangeLanguage("vi")}
+                          >
                             Vietnamese
-                          </div>
+                          </span>
                         </li>
                       </ul>
-                    )}
+                    </div>
+
+                    {/* Account */}
+                    <div className="bb-acc-drop">
+                      <div
+                        className="bb-header-btn bb-header-user dropdown-toggle bb-user-toggle"
+                        title="Account"
+                      >
+                        <div className="header-icon">
+                          {profile && (
+                            <Image
+                              src={profile?.avatar || ""}
+                              alt={profile?.fullName || "avatar"}
+                              width={30}
+                              height={30}
+                            />
+                          )}
+                        </div>
+                        <div className="bb-btn-desc">
+                          <span className="bb-btn-title">Tài khoản</span>
+                          <span className="bb-btn-stitle">
+                            {profile?.fullName}
+                          </span>
+                        </div>
+                      </div>
+                      <ul className="bb-dropdown-menu">
+                        {!profile && (
+                          <Fragment>
+                            <li>
+                              <Link
+                                href={`/register`}
+                                className="dropdown-item"
+                              >
+                                Register
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href={`/login`} className="dropdown-item">
+                                Login
+                              </Link>
+                            </li>
+                          </Fragment>
+                        )}
+                        {profile && (
+                          <Fragment>
+                            <li>
+                              <Link href={`/profile`} className="dropdown-item">
+                                Profile
+                              </Link>
+                            </li>
+                            <li>
+                              <span
+                                style={{ cursor: "pointer" }}
+                                className="dropdown-item"
+                                onClick={logout}
+                              >
+                                Logout
+                              </span>
+                            </li>
+                          </Fragment>
+                        )}
+                      </ul>
+                    </div>
+
+                    <MobileHeader />
                   </div>
                 </div>
               </div>

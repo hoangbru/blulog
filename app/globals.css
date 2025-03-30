@@ -9,6 +9,16 @@
   box-sizing: border-box;
 }
 
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  --main-color: rgba(55, 159, 200, 1);
+  --main-color-light: rgba(55, 159, 200, 0.6);
+  --text-white-color: rgba(255, 255, 255);
+  --text-black-color: rgba(0, 0, 0);
+  --background-color: rgba(0, 0, 0, 0.04);
+}
+
 body {
   font-size: 15px;
   font-weight: 400;
@@ -20,13 +30,13 @@ body {
 }
 
 ::-moz-selection {
-  color: #6c7fd8;
-  background-color: rgba(0, 0, 0, 0.04);
+  color: var(--main-color);
+  background-color: var(--background-color);
 }
 
 ::selection {
-  color: #6c7fd8;
-  background-color: rgba(0, 0, 0, 0.04);
+  color: var(--main-color);
+  background-color: var(--background-color);
 }
 
 p,
@@ -51,7 +61,7 @@ ul {
 }
 
 a:hover {
-  color: #6c7fd8 !important;
+  color: var(--main-color) !important;
   text-decoration: underline;
 }
 
@@ -96,13 +106,13 @@ h6 {
   height: 16px;
   border-radius: 100%;
   background: #fff;
-  border: 1px solid #6c7fd8;
+  border: 1px solid var(--main-color);
 }
 [type="radio"]:checked + label:after {
   content: "";
   width: 8px;
   height: 8px;
-  background: #6c7fd8;
+  background: var(--main-color);
   position: absolute;
   top: 4px;
   left: 4px;
@@ -142,7 +152,7 @@ h6 {
   content: "";
   width: 8px;
   height: 8px;
-  background: #6c7fd8;
+  background: var(--main-color);
   position: absolute;
   top: 4px;
   left: 4px;
@@ -269,7 +279,7 @@ textarea::placeholder {
   line-height: 1;
 }
 .section-title .section-detail h2 span {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .section-title .section-detail p {
   max-width: 400px;
@@ -303,10 +313,10 @@ textarea::placeholder {
   color: #686e7d;
 }
 .section-title .title-link a:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .section-title .title-link a:hover i {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 
 .bb-center {
@@ -353,7 +363,7 @@ select {
   height: 20px;
 }
 .custom-select svg path {
-  fill: #6c7fd8;
+  fill: var(--main-color);
 }
 .custom-select .custom-select {
   position: relative;
@@ -413,7 +423,7 @@ select {
   color: #777;
 }
 .select-options li:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .select-options li[rel="hide"] {
   display: none;
@@ -440,8 +450,8 @@ select {
   border: 1px solid #3d4750;
 }
 .bb-btn-1:hover {
-  background: #6c7fd8;
-  border-color: #6c7fd8;
+  background: var(--main-color);
+  border-color: var(--main-color);
   color: #fff;
 }
 
@@ -451,10 +461,10 @@ select {
   padding: 8px 20px;
   font-size: 14px;
   font-weight: 400;
-  background: #6c7fd8;
+  background: var(--main-color);
   color: #fff;
   border-radius: 10px;
-  border: 1px solid #6c7fd8;
+  border: 1px solid var(--main-color);
 }
 .bb-btn-2:hover {
   background: transparent;
@@ -630,9 +640,25 @@ select {
   cursor: not-allowed !important;
 }
 
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -728,7 +754,7 @@ select {
   a {
   font-size: 13px;
   font-weight: 400;
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-post-sidebar
   .post-inner-contact
@@ -804,6 +830,9 @@ select {
   padding: 2px 14px;
 }
 
+.bb-post-details-contact a#login{
+  color: var(--main-color);
+}
 .bb-post-details-contact .bb-pro-pagination {
   margin-bottom: 24px;
 }
@@ -822,6 +851,9 @@ select {
   font-size: 15px;
   font-weight: 300;
   color: #777;
+}
+.bb-post-details-contact .inner-post-details-contact span.author {
+  color: var(--main-color);
 }
 .bb-post-details-contact .inner-post-details-contact h4.sub-title {
   margin-bottom: 4px;
@@ -921,7 +953,7 @@ select {
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-post-details-contact
   .bb-post-details-comment
@@ -1062,11 +1094,11 @@ select {
   top: -1px;
   width: 18px;
   height: 18px;
-  border: 1px solid #6c7fd8;
+  border: 1px solid var(--main-color);
   content: "\eb7b";
   position: absolute;
   display: none;
-  background: #6c7fd8;
+  background: var(--main-color);
   font-family: "remixicon";
   font-size: 14px;
   font-weight: 800;

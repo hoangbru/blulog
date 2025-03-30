@@ -27,7 +27,7 @@ const PostDetails = ({ post }: PostDetailsProps) => {
             <h4 className="sub-title">{post.title}</h4>
             <div className="row">
               <span className="col-9">{formatDate(post.createdAt)}</span>
-              <span className="col-3 text-end" style={{ color: "#6c7fd8" }}>
+              <span className="col-3 text-end author">
                 {post.author.fullName}
               </span>
             </div>

@@ -29,15 +29,12 @@ const PostContainer = ({ slug }: PostContainerProps) => {
 
     try {
       const { data }: PostResponse = await fetcher(`/api/posts/${slug}`);
-
-      if (data?.post) {
+      if (data) {
         setPost(data.post);
-      } else {
-        setError("Post not found.");
       }
     } catch (error) {
       console.error("Error fetching post:", error);
-      setError("Failed to load post, please try again later.");
+      setError("Không thể tải bài viết, vui lòng thử lại sau.");
     } finally {
       setIsLoading(false);
     }
@@ -52,7 +49,7 @@ const PostContainer = ({ slug }: PostContainerProps) => {
   return (
     <Fragment>
       {error ? (
-        <p className="container">{error}</p>
+        <div className="col-xl-8 col-lg-7 col-12 mb-24">{error}</div>
       ) : (
         post && (
           <Fragment>

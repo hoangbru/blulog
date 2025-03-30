@@ -27,15 +27,13 @@ const PostComments: FC<PostCommentsProps> = ({ postId }) => {
   const [error, setError] = useState<string | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [pagination, setPagination] = useState<PaginationType | null>(null);
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const queryString = useMemo(() => {
     const params = new URLSearchParams({
-      page: currentPage.toString(),
       post: postId.toString(),
     });
     return params.toString();
-  }, [currentPage, postId]);
+  }, [postId]);
 
   const fetchComments = useCallback(async () => {
     setIsLoading(true);
@@ -60,15 +58,6 @@ const PostComments: FC<PostCommentsProps> = ({ postId }) => {
   useEffect(() => {
     fetchComments();
   }, [fetchComments]);
-
-  const handlePageChange = (page: number) => {
-    if (!pagination) return;
-    const { totalPages } = pagination;
-
-    if (page !== currentPage && page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
 
   return (
     <div>
@@ -111,7 +100,7 @@ const PostComments: FC<PostCommentsProps> = ({ postId }) => {
       ) : (
         <div>
           Hãy{" "}
-          <Link href="/login" style={{ color: "#6c7fd8" }}>
+          <Link href="/login" id="login">
             đăng nhập
           </Link>{" "}
           để bình luận

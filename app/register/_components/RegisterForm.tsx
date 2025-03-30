@@ -10,68 +10,52 @@ import { Button, Input, Label, FieldError } from "@/components/base";
 import { mutation } from "@/utils/fetcher";
 import { registerSchema } from "@/schemas/auth";
 import { AuthState } from "@/types/auth";
+import { validateForm } from "@/utils/validate";
 
 const RegisterForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<AuthState>({
-    message: { email: [], password: [] },
-  });
+  const [errors, setErrors] = useState<AuthState>({ email: [], password: [] });
   const formRef = useRef<HTMLFormElement>(null);
 
-  const clearErrors = () => setErrors({ message: { email: [], password: [] } });
+  const clearErrors = () => setErrors({ email: [], password: [] });
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    clearErrors();
+    setIsLoading(true);
 
     const formData = new FormData(event.currentTarget);
 
-    const validatedFields = registerSchema.safeParse({
-      email: formData.get("email"),
-      password: formData.get("password"),
-    });
-
-    if (!validatedFields.success) {
-      const { fieldErrors } = validatedFields.error.flatten();
-      setErrors({
-        message: {
-          email: fieldErrors.email ?? [],
-          password: fieldErrors.password ?? [],
-        },
-      });
-      return;
-    }
-
-    setIsLoading(true);
     try {
+      const validated = validateForm(formData, registerSchema);
+      if (!validated.success) {
+        return setErrors({ ...validated.errors });
+      }
       const apiResponse = await mutation(
         "/api/register",
-        validatedFields.data,
+        validated.data,
         "POST"
       );
-      clearErrors();
 
-      if (apiResponse.meta.errors) {
-        toast.error(apiResponse.meta.message);
-      } else {
-        formRef.current?.reset();
-        toast.success(apiResponse.meta.message);
-        router.push(`${process.env.NEXT_PUBLIC_BASE_URL}//login`);
-      }
-    } catch (error) {
-      console.error("Registration failed:", error);
+      formRef.current?.reset();
+      toast.success(apiResponse.meta.message);
+      router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/login`);
+    } catch (error: unknown) {
+      const err = error as { message: string };
+      toast.error(err.message);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <form onSubmit={onSubmit} ref={formRef}>
+    <form onSubmit={handleRegister} ref={formRef}>
       <div className="bb-register-wrap">
         <Label label={"Email*"}>
           <Input name="email" type="email" placeholder="Enter your Email" />
         </Label>
-        <FieldError message={errors.message.email} />
+        <FieldError message={errors.email} />
       </div>
       <div className="bb-register-wrap">
         <Label label={"Password*"}>
@@ -81,7 +65,7 @@ const RegisterForm = () => {
             placeholder="Enter your password"
           />
         </Label>
-        <FieldError message={errors.message.password} />
+        <FieldError message={errors.password} />
       </div>
       <div className="bb-register-button">
         <Button disabled={isLoading}>Register</Button>

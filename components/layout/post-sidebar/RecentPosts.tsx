@@ -40,7 +40,7 @@ const RecentPosts = () => {
       }
     } catch (error) {
       console.error("Error fetching posts:", error);
-      setError("Failed to load posts, please try again later.");
+      setError("Không thể tải danh sách bài viết, vui lòng thử lại sau.");
     } finally {
       setIsLoading(false);
     }

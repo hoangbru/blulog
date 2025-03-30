@@ -28,7 +28,7 @@ const PostSidebarCard: FC<PostSidebarCardProps> = ({ post }) => {
             <Link href={`/category/${post.category.slug}`}>
               {post.category.name}
             </Link>
-            <h4>
+            <h4 className="line-clamp-2">
               <Link href={`/post/${post.slug}`}>{post.title}</Link>
             </h4>
             <p>{formatDate(post.createdAt, "short")}</p>

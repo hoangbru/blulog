@@ -3,17 +3,17 @@
 import { Fragment, useState } from "react";
 import Link from "next/link";
 
+import { useCategory } from "@/context/CategoryContext";
+
 const MobileHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/shop", label: "Shop" },
-    { href: "/about", label: "About Us" },
-    { href: "/contact", label: "Contact Us" },
-    { href: "/post", label: "Post" },
-    { href: "/offer", label: "Offers" },
-  ];
+  const { categories, isLoading } = useCategory();
+
+  const navItems = categories.map((item) => ({
+    href: item.slug,
+    label: item.name,
+  }));
 
   return (
     <Fragment>
@@ -36,7 +36,7 @@ const MobileHeader = () => {
       >
         {/* Menu Title */}
         <div className="bb-menu-title">
-          <span className="menu_title">My Menu</span>
+          <span className="menu_title">Danh mục</span>
           <button
             type="button"
             className="bb-close-menu"
@@ -50,11 +50,17 @@ const MobileHeader = () => {
         <div className="bb-menu-inner">
           <div className="bb-menu-content">
             <ul>
-              {navItems.map((item, index) => (
-                <li key={index} onClick={() => setMenuOpen(false)}>
-                  <Link href={`${item.href}`}>{item.label}</Link>
-                </li>
-              ))}
+              {isLoading ? (
+                <li>Đang tải...</li>
+              ) : categories.length ? (
+                navItems.map((item, index) => (
+                  <li key={index} onClick={() => setMenuOpen(false)}>
+                    <Link href={`/category/${item.href}`}>{item.label}</Link>
+                  </li>
+                ))
+              ) : (
+                <li>Danh mục trống</li>
+              )}
             </ul>
           </div>
 

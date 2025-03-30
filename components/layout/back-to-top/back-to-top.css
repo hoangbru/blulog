@@ -9,8 +9,8 @@
   border-radius: 20px;
   cursor: pointer;
   background-color: #fff;
-  color: #6c7fd8;
-  border: 1px solid #6c7fd8;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
   text-align: center;
   font-size: 22px;
   line-height: 1.6;
@@ -31,6 +31,6 @@
 }
 .back-to-top svg path {
   fill: transparent;
-  stroke: #6c7fd8;
+  stroke: var(--main-color);
   stroke-width: 5px;
 }

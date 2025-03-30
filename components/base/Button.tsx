@@ -14,7 +14,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={disabled}
         {...props}
       >
-        {disabled ? "Loading..." : children}
+        {disabled ? "Đang tải..." : children}
       </button>
     );
   }

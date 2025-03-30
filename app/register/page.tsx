@@ -7,7 +7,7 @@ import RegisterContainer from "./_components/RegisterContainer";
 export default function Register() {
   return (
     <Fragment>
-      <Breadcrumb />
+      <Breadcrumb title="Đăng ký" />
       <RegisterContainer />
     </Fragment>
   );

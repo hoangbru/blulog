@@ -1,6 +1,6 @@
-import HeaderBottom from "./HeaderBottom";
-import HeaderMain from "./HeaderMain";
 import HeaderTop from "./HeaderTop";
+import HeaderBottom from "./HeaderBottom";
+
 import "./header.css";
 
 const HeaderContainer = () => {
@@ -8,7 +8,6 @@ const HeaderContainer = () => {
     <header className="bb-header">
       <HeaderTop />
       <HeaderBottom />
-      <HeaderMain />
     </header>
   );
 };

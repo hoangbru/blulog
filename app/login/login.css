@@ -39,5 +39,5 @@
   color: #686e7d;
 }
 .bb-login-contact .bb-login-button a:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }

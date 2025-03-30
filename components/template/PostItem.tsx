@@ -2,8 +2,6 @@ import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import PostTags from "@/components/template/PostTags";
-
 import { Post } from "@/types/post";
 
 interface PostItemProps {
@@ -32,11 +30,10 @@ const PostItem: FC<PostItemProps> = ({ post, index }) => {
           </div>
         </Link>
         <div className="post-contact">
-          <h5>
+          <h5 className="line-clamp-1">
             <Link href={`/post/${post.slug}`}>{post.title}</Link>
           </h5>
-          <p>{post.description}</p>
-          <PostTags post={post}/>
+          <p className="line-clamp-3">{post.description}</p>
           <div className="post-btn">
             <Link href={`/post/${post.slug}`} className="bb-btn-2">
               Đọc thêm

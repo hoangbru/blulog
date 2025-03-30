@@ -16,17 +16,12 @@ const FooterBottom = () => {
     <div className="footer-bottom">
       <div className="container">
         <div className="row">
-          <div className="bb-bottom-info">
-            <div className="footer-copy">
-              <div className="footer-bottom-copy">
-                <div className="bb-copy">
-                  Copyright © {currentYear}
-                  <Link className="site-name" href={`/`}>
-                    Blulog
-                  </Link>{" "}
-                  all rights reserved.
-                </div>
-              </div>
+          <div className="footer-copy">
+            <div className="bb-copy">
+              <span>© {currentYear} Toàn bộ bản quyền thuộc</span>
+              <Link className="site-name" href={`/`}>
+                Blulog
+              </Link>
             </div>
           </div>
         </div>

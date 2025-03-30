@@ -39,7 +39,7 @@
   color: #686e7d;
 }
 .bb-register .bb-register-button a:hover {
-  color: #6c7fd8;
+  color: var(--main-color);
 }
 .bb-register .bb-register-wrap .custom-select {
   width: 100%;
